@@ -1,18 +1,24 @@
 import React from 'react';
-import { Box, Text, Button } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RestaurantList from './components/RestaurantList';
-import mockRestaurants from './utils/mockRestaurants';
+import RestaurantDetails from './components/RestaurantDetails';
+import { CartProvider } from './context/CartContext';
+// Importa otros componentes según necesites
 
 function App() {
   return (
-    <Box textAlign="center" fontSize="xl">
-      <Box p={5}>
-        <Text>Bienvenido a tu App de Restaurantes</Text>
-      </Box>
-      <Button colorScheme="blue">Haz tu Pedido</Button>
-
-      <RestaurantList restaurants={mockRestaurants} />
-    </Box>
+    <ChakraProvider>
+      <CartProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<RestaurantList />} />
+            <Route path="/restaurant/:id" element={<RestaurantDetails />} />
+            {/* Define otras rutas aquí */}
+          </Routes>
+        </Router>
+      </CartProvider>
+    </ChakraProvider>
   );
 }
 

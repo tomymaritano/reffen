@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Box, Text, Button } from '@chakra-ui/react';
+import RestaurantList from './components/RestaurantList';
+import mockRestaurants from './utils/mockRestaurants';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box textAlign="center" fontSize="xl">
+      <Box p={5}>
+        <Text>Bienvenido a tu App de Restaurantes</Text>
+      </Box>
+      <Button colorScheme="blue">Haz tu Pedido</Button>
+
+      <RestaurantList restaurants={mockRestaurants} />
+    </Box>
   );
 }
 
